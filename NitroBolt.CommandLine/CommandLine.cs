@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace NitroBolt.CommandLine
 {
-    public class CommandLineOperationAttribute : Attribute
+    public class CommandLineAttribute : Attribute
     {
-        public CommandLineOperationAttribute(string name)
+        public CommandLineAttribute(string name)
         {
             this.Name = name;
         }
@@ -20,7 +20,7 @@ namespace NitroBolt.CommandLine
             {
                 foreach (var method in type.GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static))
                 {
-                    var attr = method.GetCustomAttributes(typeof(CommandLineOperationAttribute), false).FirstOrDefault() as CommandLineOperationAttribute;
+                    var attr = method.GetCustomAttributes(typeof(CommandLineAttribute), false).FirstOrDefault() as CommandLineAttribute;
                     if (attr == null)
                         continue;
                     if (typeof(Task).IsAssignableFrom(method.ReturnType))

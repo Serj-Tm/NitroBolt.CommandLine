@@ -11,7 +11,7 @@ namespace NitroBolt.CommandLine
     {
         public static int Process(string[] args, System.Reflection.Assembly assembly)
         {
-            var operations = CommandLineOperationAttribute.GetAllOperations(assembly).ToArray();
+            var operations = CommandLineAttribute.GetAllOperations(assembly).ToArray();
 
             return Process(args, operations);
 

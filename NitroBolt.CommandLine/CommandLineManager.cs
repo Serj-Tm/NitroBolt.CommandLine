@@ -33,7 +33,7 @@ namespace NitroBolt.CommandLine
                 }
 
 
-                var operation = operations.Where(op => "--" + op.Name == args.FirstOrDefault()).FirstOrDefault();
+                var operation = operations.Where(op => FullName(op.Name) == args.FirstOrDefault()).FirstOrDefault();
                 if (operation != null)
                 {
                     Console.WriteLine("execute '{0}'", operation.Name);
@@ -52,5 +52,6 @@ namespace NitroBolt.CommandLine
                 return 1;
             }
         }
+        static string FullName(string name)=> name?.StartsWith("-") == true ? name : "--" + name;
     }
 }
